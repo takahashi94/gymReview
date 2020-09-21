@@ -13,7 +13,7 @@
           <p class="card-text">場所：{{ $item->place }}</p>
           <p class="card-text">感想：{{ $item->article }}</p>
           <p class="card-text">おすすめ度：{{ $item->like }}</p>
-          <button class="btn btn-primary">詳しく見る</button>
+          <a href="{{route('articles.show', ['article' => $item->id ])}}"><button class="btn btn-primary">詳しく見る</button></a>
         </div>
       </div>
       @endforeach
