@@ -55,7 +55,9 @@ class ArticleController extends Controller
     {
         $article = Article::find($id);
 
-        return view('articles.show', compact('article'));
+        $count_like_users = $article->like_users()->count();
+
+        return view('articles.show', compact('article', 'count_like_users'));
     }
 
     /**
