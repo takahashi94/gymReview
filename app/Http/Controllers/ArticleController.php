@@ -66,7 +66,8 @@ class ArticleController extends Controller
      */
     public function edit($id)
     {
-        //
+        $article = Article::find($id);
+        return view('articles.edit', compact('article'));
     }
 
     /**
@@ -76,9 +77,12 @@ class ArticleController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(ArticleRequest $request, $id)
     {
-        //
+        $article = Article::find($id);
+        $article->fill($request->all())->save();
+
+        return redirect()->route('articles.show', compact('article'));
     }
 
     /**

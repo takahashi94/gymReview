@@ -12,6 +12,10 @@
           <p class="card-text">場所：{{ $article->place }}</p>
           <p class="card-text">感想：{{ $article->article }}</p>
           <p class="card-text">おすすめ度：{{ $article->like }}</p>
+          @if ($article->user->id === Auth::id())
+              <a href="{{ route('articles.edit', [$article->id]) }}">編集</a>
+              <a href="">削除</a>
+          @endif
         </div>
       </div>
     </div>
