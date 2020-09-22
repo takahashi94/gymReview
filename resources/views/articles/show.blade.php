@@ -14,7 +14,11 @@
           <p class="card-text">おすすめ度：{{ $article->like }}</p>
           @if ($article->user->id === Auth::id())
               <a href="{{ route('articles.edit', [$article->id]) }}">編集</a>
-              <a href="">削除</a>
+              <form action="{{ route('articles.destroy', [$article->id]) }}" method="post">
+                @csrf
+                @method('delete')
+                <input type="submit" value="削除" class="btn btn-danger">
+              </form>
           @endif
         </div>
       </div>
